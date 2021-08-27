@@ -94,7 +94,8 @@ a{
 .link-card{
   width: 100%;
   border: #00B4CC solid;
-  border-radius: 20px;  
+  border-radius: 20px;
+  text-align: center;
 }
 
 .no-result{
