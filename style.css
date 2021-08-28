@@ -75,6 +75,7 @@ body{
   background-color: transparent;
   top: 50%;
   transform: translateY(25%);
+  cursor:pointer;
 }
 #search-query{
   width: 70%;
@@ -95,6 +96,8 @@ a{
   border: #00B4CC solid;
   border-radius: 20px;
   text-align: center;
+  margin-top: 0.25rem;
+  margin-bottom: 0.25rem;
 }
 
 .no-result{

@@ -19,13 +19,17 @@ function(err, data) {
     alert('Can\'t fetch the database. Something went wrong!!\n ' + err);
   } else {
     bulletdb=data;
+    document.getElementById("searchTxt").placeholder+=` Search among ${Object.keys(bulletdb).length} movies`
   }
 });
+
 let bulletdb;
+
 document.getElementById("searchBtn").addEventListener("click",
     (ev)=>{
         __search();
 })
+
 document.getElementById("searchTxt").addEventListener('keyup',
     (ev)=>{
         if(ev.keyCode===13){
@@ -33,6 +37,7 @@ document.getElementById("searchTxt").addEventListener('keyup',
         }
     }
 )
+
 document.addEventListener("keyup",
     (ev)=>{
         if(ev.keyCode===9){
@@ -40,6 +45,7 @@ document.addEventListener("keyup",
         }
     }
 )
+
 function __search(){
     text=document.getElementById("searchTxt").value.trim();
     if(text==""){
@@ -81,6 +87,7 @@ function RenderLinks(text,dictionary){
     element+=`</div>`;
     return element;
 }
+
 function PlotResults(text,dictionary){
     document.getElementById("result-plot").innerHTML=RenderLinks(text,dictionary);
     document.getElementById("search-page").style.display="none";
