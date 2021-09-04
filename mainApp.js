@@ -13,6 +13,22 @@ var getJSON = function(url, callback) {
     xhr.send();
 };
 
+function reverseObject(object) {
+    var newObject = {};
+    var keys = [];
+
+    for (var key in object) {
+        keys.push(key);
+    }
+
+    for (var i = keys.length - 1; i >= 0; i--) {
+      var value = object[keys[i]];
+      newObject[keys[i]]= value;
+    }       
+
+    return newObject;
+}
+
 getJSON('https://raw.githubusercontent.com/NurTasin/links/main/movies.json',
 function(err, data) {
   if (err !== null) {
@@ -89,10 +105,26 @@ function RenderLinks(text,dictionary){
 }
 
 function PlotResults(text,dictionary){
-    document.getElementById("result-plot").innerHTML=RenderLinks(text,dictionary);
+    document.getElementById("result-plot").innerHTML=RenderLinks(text,reverseObject(dictionary));
     document.getElementById("search-page").style.display="none";
     document.getElementById("icon-wrapper").style.display="none";
     document.getElementById("home-btn").addEventListener("click",(ev)=>{
         location.reload();
     })
 }
+
+getJSON("https://api.github.com/repos/NurTasin/links/git/refs/heads/main",(err,data)=>{
+    if(err){
+        console.error(err);
+    }else{
+        getJSON(data.object.url,(err,data_)=>{
+            if(err){
+                console.error(err);
+            }else{
+                document.getElementById("dbupdatedate").innerText= new Date(data_.committer.date).toString()
+            }
+        })
+    }
+})
+
+console.log("Site Version: 2.0.0")

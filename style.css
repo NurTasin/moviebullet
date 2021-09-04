@@ -103,3 +103,8 @@ a{
 .no-result{
   color: red;
 }
+
+#update-details{
+  font-size: small;
+  text-align: center;
+}
