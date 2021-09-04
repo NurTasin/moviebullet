@@ -1,2 +1,2 @@
 # movie-bullet-gui
-Website for Downloading Movie 
+Frontend for movibullet.ml
