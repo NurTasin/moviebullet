@@ -108,3 +108,20 @@ a{
   font-size: small;
   text-align: center;
 }
+
+#background{
+  position: absolute;
+  height: 100%;
+  width: 100%;
+  background: url('./imgs/bg1.jpg');
+  z-index: -100;
+}
+
+#bgcover{
+  position: absolute;
+  height: 100%;
+  width: 100%;
+  background-color: #000;
+  opacity: 0.50;
+  z-index: -99;
+}
