@@ -107,6 +107,7 @@ a{
 #update-details{
   font-size: small;
   text-align: center;
+  color: #f2f2f2;
 }
 
 #background{
@@ -115,6 +116,8 @@ a{
   width: 100%;
   background: url('./imgs/bg1.jpg');
   z-index: -100;
+  margin: 0%;
+  padding: 0%;
 }
 
 #bgcover{
@@ -122,6 +125,8 @@ a{
   height: 100%;
   width: 100%;
   background-color: #000;
-  opacity: 0.50;
+  opacity: 0.60;
   z-index: -99;
+  margin: 0%;
+  padding: 0%;
 }

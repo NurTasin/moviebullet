@@ -121,10 +121,34 @@ getJSON("https://api.github.com/repos/NurTasin/links/git/refs/heads/main",(err,d
             if(err){
                 console.error(err);
             }else{
-                document.getElementById("dbupdatedate").innerText= new Date(data_.committer.date).toString()
+                let date__=new Date(data_.committer.date)
+                document.getElementById("dbupdatedate").innerText=`${date__.getDate()}/${date__.getMonth()}/${date__.getFullYear()} ${date__.getHours()}:${date__.getMinutes()}:${date__.getSeconds()}` 
             }
         })
     }
 })
 
-console.log("Site Version: 2.0.0")
+getJSON("https://api.github.com/repos/NurTasin/movie-bullet-gui/git/refs/heads/main",(err,data)=>{
+    if(err){
+        console.error(err);
+    }else{
+        getJSON(data.object.url,(err,data_)=>{
+            if(err){
+                console.error(err);
+            }else{
+                let last_date= new Date(data_.committer.date);
+                let date__={
+                    "day":last_date.getDate(),
+                    "month":last_date.getMonth(),
+                    "year":last_date.getFullYear(),
+                    "hour":last_date.getHours(),
+                    "minute":last_date.getMinutes(),
+                    "second":last_date.getSeconds()
+                }
+                console.log(`Site Last Update On : ${date__.day}/${date__.month}/${date__.year} ${date__.hour}:${date__.minute}:${date__.second}`)
+            }
+        })
+    }
+})
+
+console.log("Site Version: 2.0.1")
