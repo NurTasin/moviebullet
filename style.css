@@ -77,15 +77,22 @@ body{
   transform: translateY(25%);
   cursor:pointer;
 }
+#search_number{
+  text-align: center;
+  font-size: 1rem;
+  font-weight: bold;
+}
 #search-query{
+  position: absolute;
   width: 70%;
-  left: 10%;
+  left: 50%;
   height: 2rem;
-  top:0;
+  top:1.5rem;
   border: transparent;
   border-radius: 1rem;
-  text-indent: 2rem;
   text-transform:uppercase;
+  text-align: center;
+  transform: translateX(-50%);
 }
 a{
   text-decoration: none;

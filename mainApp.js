@@ -1,3 +1,4 @@
+const search_thresold=75;
 var getJSON = function(url, callback) {
     var xhr = new XMLHttpRequest();
     xhr.open('GET', url, true);
@@ -69,11 +70,15 @@ function __search(){
         return;
     }else{
         let results={};
+        let highScore=0;
         for(const i in bulletdb){
-            if (String(i).toLowerCase().includes(text.toLowerCase())){
+            let score=fuzzball.partial_ratio(String(text).toLowerCase(),String(i).toLowerCase());
+            if(score>highScore){highScore=score}
+            if (score>search_thresold){
                 results[String(i)]=String(bulletdb[String(i)]);
             }
         }
+        console.log(highScore);
         PlotResults(text,results);
     }
 }
@@ -91,13 +96,16 @@ function RenderLinks(text,dictionary){
     <button id="home-btn"><i class="fas fa-arrow-left fa-3x"></i></button>
     <input type="text" value="${text}" id="search-query"  readonly/>
     </div>
+    <div id="search_number">
+    <p>${Object.keys(dictionary).length} results found.</p>
+    </div>
     `;
     if(Object.keys(dictionary).length>0){
         for( movie in dictionary){
             element+=RenderLink(movie,dictionary[movie]);
         }
     }else{
-        element+=`<h2 class="no-result"><i class="fas fa-exclamation-triangle fa-2x"></i>         No Result Found. Check your spelling and try again.</h2>`
+        element+=`<h2 class="no-result"><i class="fas fa-exclamation-triangle fa-2x"></i>         No results found for "${text}". Check your spelling and try again.</h2>`
     }
     
     element+=`</div>`;
@@ -105,9 +113,12 @@ function RenderLinks(text,dictionary){
 }
 
 function PlotResults(text,dictionary){
-    document.getElementById("result-plot").innerHTML=RenderLinks(text,reverseObject(dictionary));
+    document.getElementById("result-plot").innerHTML=RenderLinks(text,dictionary);
     document.getElementById("search-page").style.display="none";
     document.getElementById("icon-wrapper").style.display="none";
+    document.getElementById("background").style.display="none";
+    document.getElementById("bgcover").style.display="none";   
+    document.body.style.backgroundColor="#eee"; 
     document.getElementById("home-btn").addEventListener("click",(ev)=>{
         location.reload();
     })
@@ -151,4 +162,4 @@ getJSON("https://api.github.com/repos/NurTasin/movie-bullet-gui/git/refs/heads/m
     }
 })
 
-console.log("Site Version: 2.0.1")
+console.log("Site Version: 2.1.0")
