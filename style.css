@@ -151,3 +151,17 @@ a{
   width: 100%;
   object-fit: contain;
 }
+.counterimg{
+  position: relative;
+  left: 100%;
+  transform: translateX(-100%);
+}
+
+@media screen and (max-width: 500px) {
+  .counterimg{
+    position: absolute;
+    bottom: 0%;
+    left: 50%;
+    transform: translateX(-50%);
+  }
+}
