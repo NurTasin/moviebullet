@@ -162,4 +162,4 @@ getJSON("https://api.github.com/repos/NurTasin/movie-bullet-gui/git/refs/heads/m
     }
 })
 
-console.log("Site Version: 2.1.0")
+console.log("Site Version: 2.1.1")
