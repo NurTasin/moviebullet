@@ -116,11 +116,16 @@ function PlotResults(text,dictionary){
     document.getElementById("result-plot").innerHTML=RenderLinks(text,reverseObject(dictionary));
     document.getElementById("search-page").style.display="none";
     document.getElementById("icon-wrapper").style.display="none";
-    document.getElementById("background").style.display="none";
-    document.getElementById("bgcover").style.display="none";   
+    // document.getElementById("background").style.display="none";
+    // document.getElementById("bgcover").style.display="none";
+    document.getElementsByClassName("counterimg")[0].style.display="none";
     document.body.style.backgroundColor="#eee"; 
     document.getElementById("home-btn").addEventListener("click",(ev)=>{
-        location.reload();
+        // location.reload();
+        document.getElementById("result-plot").innerHTML="";
+        document.getElementById("search-page").style.display="";
+        document.getElementById("icon-wrapper").style.display="";
+        document.getElementsByClassName("counterimg")[0].style.display="";
     })
 }
 
@@ -162,4 +167,12 @@ getJSON("https://api.github.com/repos/NurTasin/movie-bullet-gui/git/refs/heads/m
     }
 })
 
-console.log("Site Version: 2.1.1")
+document.getElementById("unknown-img").addEventListener("click",()=>{
+    window.open("https://songslyric.site/links/40249/");
+})
+
+document.getElementById("unknown-img2").addEventListener("click",()=>{
+    window.open("https://songslyric.site/links/39763/")
+})
+
+console.log("Site Version: 2.2.1")

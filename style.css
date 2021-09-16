@@ -19,9 +19,13 @@ body{
   height: 20px;
   border-radius: 5px 0 0 5px;
   outline: none;
-  color: #9DBFAF;
+  color: #000;
 }
 
+.searchTerm::placeholder {
+  color: black;
+  opacity: 1;
+}
 .searchTerm:focus{
   color: #000;
 }
@@ -76,11 +80,13 @@ body{
   top: 50%;
   transform: translateY(25%);
   cursor:pointer;
+  z-index: 1;
 }
 #search_number{
   text-align: center;
   font-size: 1rem;
   font-weight: bold;
+  color: #ccc;
 }
 #search-query{
   position: absolute;
@@ -105,6 +111,7 @@ a{
   text-align: center;
   margin-top: 0.25rem;
   margin-bottom: 0.25rem;
+  z-index: 131;
 }
 
 .no-result{
@@ -118,38 +125,52 @@ a{
 }
 
 #background{
-  position: absolute;
-  height: 200%;
+  min-height: 100%;
+  min-width: 1024px;
   width: 100%;
-  background: url('./imgs/bg1.jpg');
-  z-index: -100;
-  margin: 0;
-  padding: 0;
+  height: auto;
+  position: fixed;
+  top: 0;
   left: 0;
-  top:0;
+  z-index: -100;
 }
 
 #bgcover{
-  position: absolute;
-  height: 200%;
+  min-height: 100%;
+  min-width: 1024px;
   width: 100%;
-  background-color: #000;
-  opacity: 0.60;
-  z-index: -99;
-  margin: 0;
-  padding: 0;
+  height: auto;
+  position: fixed;
+  top: 0;
   left: 0;
-  top:0;
+  z-index: -99;
+  background-color: #0008;
 }
 #unknown{
+  position: relative;
   height: 80%;
   width: 70%;
-  margin: 2rem auto;
+  margin: 1rem auto;
+  font-weight: bolder;
 }
 #unknown-img{
   height: 100%;
   width: 100%;
+  margin: 1rem auto;
   object-fit: contain;
+  cursor: pointer;
+  border: #00B4CC 3px solid;
+  border-radius: 1rem;
+}
+
+#unknown-img2{
+  height: 100%;
+  width: 100%;
+  margin: 1rem auto;
+  object-fit: contain;
+  cursor: pointer;
+  border: #00B4CC 3px solid;
+  border-radius: 1rem;
 }
 .counterimg{
   position: relative;
@@ -157,11 +178,13 @@ a{
   transform: translateX(-100%);
 }
 
+#latest{
+  color: #efefef;
+  text-align: center;
+  margin: 2rem 0;
+}
 @media screen and (max-width: 500px) {
   .counterimg{
-    position: absolute;
-    bottom: 0%;
-    left: 50%;
-    transform: translateX(-50%);
+    display: none;
   }
 }
