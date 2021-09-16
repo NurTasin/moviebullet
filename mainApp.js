@@ -55,7 +55,7 @@ document.getElementById("searchTxt").addEventListener('keyup',
     }
 )
 
-document.addEventListener("keyup",
+document.body.addEventListener("keydown",
     (ev)=>{
         if(ev.keyCode===9){
             document.getElementById("searchTxt").focus();
@@ -113,7 +113,7 @@ function RenderLinks(text,dictionary){
 }
 
 function PlotResults(text,dictionary){
-    document.getElementById("result-plot").innerHTML=RenderLinks(text,dictionary);
+    document.getElementById("result-plot").innerHTML=RenderLinks(text,reverseObject(dictionary));
     document.getElementById("search-page").style.display="none";
     document.getElementById("icon-wrapper").style.display="none";
     document.getElementById("background").style.display="none";
