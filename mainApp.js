@@ -118,14 +118,12 @@ function PlotResults(text,dictionary){
     document.getElementById("icon-wrapper").style.display="none";
     // document.getElementById("background").style.display="none";
     // document.getElementById("bgcover").style.display="none";
-    document.getElementsByClassName("counterimg")[0].style.display="none";
     document.body.style.backgroundColor="#eee"; 
     document.getElementById("home-btn").addEventListener("click",(ev)=>{
         // location.reload();
         document.getElementById("result-plot").innerHTML="";
         document.getElementById("search-page").style.display="";
         document.getElementById("icon-wrapper").style.display="";
-        document.getElementsByClassName("counterimg")[0].style.display="";
     })
 }
 
