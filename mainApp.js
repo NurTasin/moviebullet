@@ -170,7 +170,15 @@ document.getElementById("unknown-img").addEventListener("click",()=>{
 })
 
 document.getElementById("unknown-img2").addEventListener("click",()=>{
-    window.open("https://songslyric.site/links/39763/")
+    window.open("https://songslyric.site/links/39527")
+})
+
+document.getElementById("unknown-img3").addEventListener("click",()=>{
+    window.open("https://songslyric.site/links/40232")
+})
+
+document.getElementById("unknown-img4").addEventListener("click",()=>{
+    window.open("https://songslyric.site/links/38594")
 })
 
 console.log("Site Version: 2.2.1")

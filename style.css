@@ -172,6 +172,26 @@ a{
   border: #00B4CC 3px solid;
   border-radius: 1rem;
 }
+
+#unknown-img3{
+  height: 100%;
+  width: 100%;
+  margin: 1rem auto;
+  object-fit: contain;
+  cursor: pointer;
+  border: #00B4CC 3px solid;
+  border-radius: 1rem;
+}
+
+#unknown-img4{
+  height: 100%;
+  width: 100%;
+  margin: 1rem auto;
+  object-fit: contain;
+  cursor: pointer;
+  border: #00B4CC 3px solid;
+  border-radius: 1rem;
+}
 .counterimg{
   position: relative;
   left: 100%;
