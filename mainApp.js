@@ -112,6 +112,9 @@ function RenderLinks(text,dictionary){
     return element;
 }
 
+
+let inPlot=false
+
 function PlotResults(text,dictionary){
     document.getElementById("result-plot").innerHTML=RenderLinks(text,reverseObject(dictionary));
     document.getElementById("search-page").style.display="none";
@@ -119,13 +122,16 @@ function PlotResults(text,dictionary){
     // document.getElementById("background").style.display="none";
     // document.getElementById("bgcover").style.display="none";
     document.body.style.backgroundColor="#eee"; 
+    inPlot=true
     document.getElementById("home-btn").addEventListener("click",(ev)=>{
         // location.reload();
         document.getElementById("result-plot").innerHTML="";
         document.getElementById("search-page").style.display="";
         document.getElementById("icon-wrapper").style.display="";
+        inPlot=false
     })
 }
+
 
 getJSON("https://api.github.com/repos/NurTasin/links/git/refs/heads/main",(err,data)=>{
     if(err){
@@ -181,4 +187,7 @@ document.getElementById("unknown-img4").addEventListener("click",()=>{
     window.open("https://songslyric.site/links/38594")
 })
 
+document.getElementById("unknown-img5").addEventListener("click",()=>{
+    window.open("https://songslyric.site/links/41056/")
+})
 console.log("Site Version: 2.2.1")
