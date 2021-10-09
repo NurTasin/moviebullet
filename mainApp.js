@@ -68,7 +68,9 @@ function __search(){
     if(text==""){
         alert("Enter the name of your desired movie in the search field and try again.");
         return;
-    }else{
+    }/*else if(fuzzball.partial_ratio(String(text).toLowerCase().trim(),String("How To Download").toLowerCase())>=90){
+        HowTo();
+    }*/else{
         let results={};
         let highScore=0;
         for(const i in bulletdb){
@@ -132,6 +134,56 @@ function PlotResults(text,dictionary){
     })
 }
 
+document.getElementById("how-to").addEventListener("click",(ev)=>{
+    HowTo();
+})
+
+function HowTo(){
+    document.getElementById("result-plot").innerHTML=`\
+    <div class="result-wrapper">
+    <div class="status">
+    <button id="home-btn"><i class="fas fa-arrow-left fa-3x"></i></button>
+    <input type="text" value="HOW TO DOWNLOAD" id="search-query"  readonly/>
+    </div>
+    <h3>Step 1 - Search The Movie Name</h3>
+    <p>Type the name of the movie in the search field like this.</p>
+    <img src="./imgs/search.PNG" class="help-img">
+    <p>Then hit Enter or click on the search button.</p>
+    <h3>Step 2 - Select The Movie</h3>
+    <p>After completing step 1, you will get the results like this:</p>
+    <img src="./imgs/results.PNG" class="help-img">
+    <p>Click on the movie's name.</p>
+    <h3>Step 3 - Select The Quality And Provider</h3>
+    <p>Once you have clicked on the movie's name, you will be taken to a page like this:</p>
+    <img src="./imgs/inter.PNG" class="help-img">
+    <p>Now choose the quality that you want. After that you have to choose the provider too.</p>
+    <h4>Providers:</h4>
+    <ul>
+        <li>GDrive: <span class="pro-det"> If are using a stable internet connection, choose this provider as it is simple. But this download will be cancelled once you have lost your internet connection.</span></li>
+        <li>MEGA: <span class="pro-det"> If you are using data connection, this could be a better choice for you. If you were downloading a movie and lost internet connection while doing that, it will resume the download once you get internet connection again. It is reccomended to use MEGA app if you are using an android device.</span></li>
+        <li>GDS: <span class="pro-det"> This option will transfer the movie to your Google Drive. For this you have to click in the GDS option and then allow the service to access your Google Drive. Once it has been transferred, you can download the movie from your Google Drive.</span></li>
+    </ul>
+    <p>Thanks for being with us.</p>
+    </div>
+`;
+    document.getElementById("search-page").style.display="none";
+    document.getElementById("icon-wrapper").style.display="none";
+    // document.getElementById("background").style.display="none";
+    // document.getElementById("bgcover").style.display="none";
+    document.body.style.backgroundColor="#eee"; 
+    document.getElementById("background").style.display="none";
+    document.getElementById("bgcover").style.backgroundColor="#aaa";
+    inPlot=true
+    document.getElementById("home-btn").addEventListener("click",(ev)=>{
+        // location.reload();
+        document.getElementById("result-plot").innerHTML="";
+        document.getElementById("search-page").style.display="";
+        document.getElementById("icon-wrapper").style.display="";
+        document.getElementById("background").style.display="";
+        document.getElementById("bgcover").style.backgroundColor="#0008";
+        inPlot=false
+    })
+}
 
 getJSON("https://api.github.com/repos/NurTasin/links/git/refs/heads/main",(err,data)=>{
     if(err){

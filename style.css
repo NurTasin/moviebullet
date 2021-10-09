@@ -220,3 +220,23 @@ a{
   }
 }
 
+#how-to{
+  background-color: #00B4CC;
+  color: #000;
+  border-radius: 0.5rem;
+  border-color: transparent;
+  font-size: medium;
+  font-weight: bold;
+  position: relative;
+  left: 50%;
+  transform: translateX(-50%);
+  cursor: pointer;
+}
+.help-img{
+  height: 50%;
+  width: 50%;
+  position: relative;
+  left: 50%;
+  transform: translateX(-50%);
+  object-fit: contain;
+}
