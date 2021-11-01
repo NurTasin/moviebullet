@@ -13,7 +13,14 @@ var getJSON = function(url, callback) {
     };
     xhr.send();
 };
-
+function spawnBuildError(title="Site Building Error!",msg=""){
+    console.log(
+`${title}!
+=====================
+${msg}
+=====================`)
+//   document.write(`<div id="error-box"><div class="face2"><div class="eye"></div><div class="eye right"></div>  <div class="mouth sad"></div></div><div class="shadow move"></div><div class="message"><h1 class="alert">${title}</h1><p>${msg}</div></div></div><style>@import "https://fonts.googleapis.com/css?family=Lato:400,700";/* CSSTidy 1.5.2: Mon, 01 Nov 2021 05:21:47 +0000 */html{display:grid;min-height:100%}body{display:grid;overflow:hidden;font-family:"Lato",sans-serif;text-align:center}#container{position:relative;margin:auto;overflow:hidden;width:700px;height:250px}h1{font-size:1.5em;font-weight:100;padding-top:5px;color:#FCFCFC;padding-bottom:5px}.green{color:#4ec07d}.red{color:#e96075}.alert{font-weight:700}p{margin-top:-5px;font-size:.9em;font-weight:100;color:#5e5e5e}button,.dot{cursor:pointer}#error-box{position:absolute;width:90%;height:100%;left:50%;transform:translateX(-50%);background:linear-gradient(to bottom left,#EF8D9C 40%,#FFC39E 100%);border-radius:20px;box-shadow:5px 5px 20px rgba(203,205,211,0.1)}.face2{position:absolute;width:15vw;height:15vw;background:#FCFCFC;border-radius:50%;border:1px solid #777;top:15%;left:37.5%;z-index:2;animation:roll 3s ease-in-out infinite}.eye{position:absolute;width:5px;height:5px;background:#777;border-radius:50%;top:40%;left:20%}.right{left:68%}.mouth{position:absolute;top:43%;left:41%;width:7px;height:7px;border-radius:50%}.sad{top:49%;border:2px solid;border-color:#777 transparent transparent #777;transform:rotate(45deg)}.move{animation:move 3s ease-in-out infinite}.message{position:absolute;width:100%;text-align:center;height:40%;bottom:0}@keyframes bounce{50%{transform:translateY(-10px)}}@keyframes roll{0%{transform:rotate(0deg);left:25%}50%{left:60%;transform:rotate(168deg)}100%{transform:rotate(0deg);left:25%}}@keyframes move{0%{left:25%}50%{left:60%}100%{left:25%}}</style>`)
+}
 function reverseObject(object) {
     var newObject = {};
     var keys = [];
@@ -29,18 +36,44 @@ function reverseObject(object) {
 
     return newObject;
 }
-
-getJSON('https://raw.githubusercontent.com/NurTasin/links/main/movies.json',
-function(err, data) {
-  if (err !== null) {
-    alert('Can\'t fetch the database. Something went wrong!!\n ' + err);
-  } else {
-    bulletdb=data;
-    document.getElementById("searchTxt").placeholder+=` Search among ${Object.keys(bulletdb).length} movies`
-  }
-});
-let bulletdb;
-
+let bulletdb
+function UpdateDBToLocalStorage(){
+    if(localStorage.getItem("db_commit_id")===null){
+        localStorage.setItem('db_commit_id','')
+    }
+    if(localStorage.getItem("bullet_db")===null){
+        localStorage.setItem('bullet_db',{})
+    }
+    current_commit_id=localStorage.getItem('db_commit_id')
+    let latest_commit_id
+    getJSON("https://api.github.com/repos/NurTasin/links/git/refs/heads/main",(err,data)=>{
+        if(err){
+            spawnBuildError(title="Unable To Connect To The GitHub API Server",msg="Can't Connect To 'https://api.github.com/repos/NurTasin/links/git/refs/heads/main'")
+        }else{
+            latest_commit_id=data.object.sha
+            console.log(latest_commit_id)
+            console.log(current_commit_id===latest_commit_id)
+            if(current_commit_id===latest_commit_id){
+                console.log("Using The Local Database As No Update Is Available.")
+                bulletdb=JSON.parse(localStorage.getItem('bullet_db'))
+                
+            }else{
+                console.log("Updating The Database As An Update Is Available.")
+                getJSON("https://raw.githubusercontent.com/NurTasin/links/main/movies.json",(err,data)=>{
+                    if(err){
+                        spawnBuildError("Unable To Connect To The Database Server","Make Sure That You're Connected To The Internet And Try Again.")
+                    }else{
+                        bulletdb=data
+                        localStorage.setItem("bullet_db",JSON.stringify(bulletdb))
+                        localStorage.setItem("db_commit_id",latest_commit_id)
+                    }
+                })
+            }
+        }
+    })
+    
+}
+UpdateDBToLocalStorage()
 document.getElementById("searchBtn").addEventListener("click",
     (ev)=>{
         __search();
