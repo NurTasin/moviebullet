@@ -52,7 +52,6 @@ function UpdateDBToLocalStorage(){
         }else{
             latest_commit_id=data.object.sha
             if(current_commit_id===latest_commit_id){
-                console.log("Using The Local Database As No Update Is Available.")
                 bulletdb=JSON.parse(localStorage.getItem('bullet_db'))
                 
             }else{
