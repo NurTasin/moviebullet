@@ -51,14 +51,11 @@ function UpdateDBToLocalStorage(){
             spawnBuildError(title="Unable To Connect To The GitHub API Server",msg="Can't Connect To 'https://api.github.com/repos/NurTasin/links/git/refs/heads/main'")
         }else{
             latest_commit_id=data.object.sha
-            console.log(latest_commit_id)
-            console.log(current_commit_id===latest_commit_id)
             if(current_commit_id===latest_commit_id){
                 console.log("Using The Local Database As No Update Is Available.")
                 bulletdb=JSON.parse(localStorage.getItem('bullet_db'))
                 
             }else{
-                console.log("Updating The Database As An Update Is Available.")
                 getJSON("https://raw.githubusercontent.com/NurTasin/links/main/movies.json",(err,data)=>{
                     if(err){
                         spawnBuildError("Unable To Connect To The Database Server","Make Sure That You're Connected To The Internet And Try Again.")
@@ -274,4 +271,4 @@ document.getElementById("unknown-img4").addEventListener("click",()=>{
 document.getElementById("unknown-img5").addEventListener("click",()=>{
     window.open("https://songslyric.site/links/41056/")
 })
-console.log("Site Version: 2.2.1")
+console.log("Site Version: 3.0.1")
