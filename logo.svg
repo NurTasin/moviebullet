@@ -27,13 +27,13 @@
      inkscape:document-units="px"
      showgrid="false"
      units="px"
-     inkscape:zoom="1.4142136"
-     inkscape:cx="415.77879"
-     inkscape:cy="394.56558"
+     inkscape:zoom="0.7071068"
+     inkscape:cx="256.67975"
+     inkscape:cy="374.76658"
      inkscape:window-width="1284"
      inkscape:window-height="728"
-     inkscape:window-x="-32000"
-     inkscape:window-y="-32000"
+     inkscape:window-x="0"
+     inkscape:window-y="0"
      inkscape:window-maximized="0"
      inkscape:current-layer="layer1" />
   <defs
@@ -170,7 +170,7 @@
        inkscape:export-ydpi="67.744843" />
     <text
        xml:space="preserve"
-       style="font-style:normal;font-weight:normal;font-size:10.5833px;line-height:1.25;font-family:sans-serif;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.264583"
+       style="font-style:normal;font-weight:normal;font-size:10.5833px;line-height:1.25;font-family:sans-serif;fill:#ffffff;fill-opacity:1;stroke:none;stroke-width:0.264583"
        x="78.399902"
        y="136.10977"
        id="text9626"
@@ -179,7 +179,7 @@
        inkscape:export-ydpi="67.744843"><tspan
          sodipodi:role="line"
          id="tspan9624"
-         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:10.5833px;font-family:Forte;-inkscape-font-specification:'Forte, Normal';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-variant-east-asian:normal;stroke-width:0.264583"
+         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:10.5833px;font-family:Forte;-inkscape-font-specification:'Forte, Normal';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-variant-east-asian:normal;stroke-width:0.264583;fill:#ffffff"
          x="78.399902"
          y="136.10977">MovieBullet</tspan></text>
   </g>
